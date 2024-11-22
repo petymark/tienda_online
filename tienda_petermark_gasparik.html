@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda del Trazacaminos</title>
+  <link rel="icon" href="resources/Pase.png" type="image/png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgba(226,220,224,255)
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+    }
+    .product, .cart {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+    }
+    .product {
+      width: calc(33% - 10px);
+      text-align: center;
+      background-image: url(resources/background.png);
+      background-color: white;
+      background-repeat: no-repeat;
+    }
+    .cart {
+      width: 100%;
+      margin-top: 20px;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    button {
+      background-color: rgba(50,88,91,255);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: rgba(89,127,127,255);
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      
+    }
+    .total {
+      font-weight: bold;
+      text-align: right;
+      margin-top: 50px;
+      margin-right: 50px;
+    }
+    .imagen-responsive{
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+    }
+    .text-shadow{
+      text-shadow:
+                -1px -1px 0 white, /* Sombra hacia la esquina superior izquierda */
+                1px -1px 0 white,  /* Sombra hacia la esquina superior derecha */
+                -1px 1px 0 white,  /* Sombra hacia la esquina inferior izquierda */
+                1px 1px 0 white;   /* Sombra hacia la esquina inferior derecha */ 
+    }
+  </style>
+</head>
+<body>
+
+  <h1 style="text-align: center; color:  white ; background-color: rgba(50,88,91,255); padding: 10px;">Tienda del Trazacaminos</h1>
+
+  <div class="container">
+    <!-- Productos -->
+    <div class="product" data-name="Dr.Ratio" data-price="80">
+      <img src="resources/Dr.Ratio.webp" alt="Personaje Dr.Ratio" class="imagen-responsive">
+      <p class="text-shadow"><strong>Dr.Ratio</strong></p>
+      <p class="text-shadow">Precio: 80 <img src="resources/Pase.png" alt="Pases de Trazacaminos" style="vertical-align: middle; margin-left: 5px; width: 25px; height: auto;"></p>
+      <input type="number" min="1" value="1">
+      <button class="add-to-cart">Añadir al carrito</button>
+    </div>
+    <div class="product" data-name="Aventurine" data-price="85">
+      <img src="resources/Aventurine.webp" alt="Personaje Aventurine" class="imagen-responsive">
+      <p class="text-shadow"><strong>Aventurine</strong></p>
+      <p class="text-shadow">Precio: 85 <img src="resources/Pase.png" alt="Pases de Trazacaminos" style="vertical-align: middle; margin-left: 5px; width: 25px; height: auto;"></p>
+      <input type="number" min="1" value="1">
+      <button class="add-to-cart">Añadir al carrito</button>
+    </div>
+    <div class="product" data-name="Robin" data-price="90">
+      <img src="resources/Robin.webp" alt="Personaje Aventurine" class="imagen-responsive">
+      <p class="text-shadow"><strong>Robin</strong></p>
+      <p class="text-shadow">Precio: 90 <img src="resources/Pase.png" alt="Pases de Trazacaminos" style="vertical-align: middle; margin-left: 5px; width: 25px; height: auto;"></p>
+      <input type="number" min="1" value="1">
+      <button class="add-to-cart">Añadir al carrito</button>
+    </div>
+    <div class="product" data-name="Sunday" data-price="90">
+      <img src="resources/Sunday.webp" alt="Personaje Sunday" class="imagen-responsive">
+      <p class="text-shadow"><strong>Sunday</strong></p>
+      <p class="text-shadow">Precio: 90 <img src="resources/Pase.png" alt="Pases de Trazacaminos" style="vertical-align: middle; margin-left: 5px; width: 25px; height: auto;"></p>
+      <input type="number" min="1" value="1">
+      <button class="add-to-cart">Añadir al carrito</button>
+    </div>
+    <div class="product" data-name="Boothill" data-price="85">
+      <img src="resources/Boothill.webp" alt="Personaje Boothill" class="imagen-responsive">
+      <p class="text-shadow"><strong>Boothill</strong></p>
+      <p class="text-shadow">Precio: 85 <img src="resources/Pase.png" alt="Pases de Trazacaminos" style="vertical-align: middle; margin-left: 5px; width: 25px; height: auto;"></p>
+      <input type="number" min="1" value="1">
+      <button class="add-to-cart">Añadir al carrito</button>
+    </div>
+    <div class="product" data-name="Fugue" data-price="80">
+      <img src="resources/Fugue.webp" alt="Personaje Fugue" class="imagen-responsive">
+      <p class="text-shadow"><strong>Fugue</strong></p>
+      <p class="text-shadow">Precio: 80 <img src="resources/Pase.png" alt="Pases de Trazacaminos" style="vertical-align: middle; margin-left: 5px; width: 25px; height: auto;"></p>
+      <input type="number" min="1" value="1">
+      <button class="add-to-cart">Añadir al carrito</button>
+    </div>
+  </div>
+
+  <!-- Carrito -->
+  <div class="cart">
+    <h2>Carrito</h2>
+    <div id="cart-items"></div>
+    <div class="total">TOTAL CARRITO: <span id="total-price">0</span><img src="resources/Pase.png" alt="Pases de Trazacaminos" style="vertical-align: middle; margin-left: 5px; width: 25px; height: auto;"></div>
+    <button id="buy-now">COMPRAR AHORA</button>
+    <button id="delete-product">ELIMINAR PRODUCTO</button>
+  </div>
+
+  <script>
+    const cartItems = [];
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalPriceEl = document.getElementById('total-price');
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        const product = button.parentElement;
+        const name = product.getAttribute('data-name');
+        const price = parseFloat(product.getAttribute('data-price'));
+        const quantity = parseInt(product.querySelector('input').value);
+
+        cartItems.push({ name, price, quantity });
+        updateCart();
+      });
+    });
+
+    document.getElementById('buy-now').addEventListener('click', () => {
+      const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+      alert(`TU COMPRA ES: ${totalItems} productos con un importe total de ${totalPrice} Pases de Trazacaminos`);
+    });
+
+    document.getElementById('delete-product').addEventListener('click', () => {
+      if (cartItems.length > 0) {
+        cartItems.pop();
+        updateCart();
+      }
+    });
+
+    function updateCart() {
+      cartItemsContainer.innerHTML = '';
+      let totalPrice = 0;
+
+      cartItems.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        totalPrice += itemTotal;
+
+        const itemEl = document.createElement('div');
+        itemEl.classList.add('cart-item');
+        itemEl.textContent = `${item.name} - ${item.price} Pases de Trazacaminos x ${item.quantity} = ${itemTotal} Pases de Trazacaminos`;
+        cartItemsContainer.appendChild(itemEl);
+      });
+
+      totalPriceEl.textContent = totalPrice.toFixed(2);
+    }
+  </script>
+
+</body>
+</html>
